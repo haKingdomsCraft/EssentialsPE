@@ -290,13 +290,6 @@ class Loader extends PluginBase{
         if(!file_exists($this->getDataFolder() . "config.yml")){
             $this->saveDefaultConfig();
         }
-	    
-        if(!$cfg->exists("version") || $cfg->get("version") !== "0.0.3"){
-            $this->getLogger()->debug(TextFormat::RED . "An invalid config file was found, generating a new one...");
-            rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config.yml.old");
-            $this->saveDefaultConfig();
-            $cfg = $this->getConfig();
-        }
 
         $booleans = ["enable-custom-colors"];
         foreach($booleans as $key){
